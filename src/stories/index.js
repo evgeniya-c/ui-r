@@ -4,70 +4,24 @@ import {storiesOf} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 import {withInfo} from '@storybook/addon-info';
 import {withKnobs, select, text, boolean} from '@storybook/addon-knobs/react';
+import {withSmartKnobs} from 'storybook-addon-smart-knobs'
 
 import {Button} from '../components/Button';
-import {Button2} from "../components/Button2";
 
+import withThemes from "../themes";
 
 storiesOf('Button', module)
+  .addDecorator(withSmartKnobs)
   .addDecorator(withKnobs)
-  .add('Prototype',
-    withInfo({
-      text: 'Прототип кнопки - имеет все размеры кнопки, но не содержит заливку, обводку и стили для состояний  :hover, :active, :visited.',
-    })(() => <Button label='Button'/>))
+  .addDecorator(withThemes([
+    {name: "finance", color: "#00bff1", default: true},
+    {name: "minfin", color: "#df3014"},
+  ]))
   .add('Filled',
     withInfo({
-      text: 'Кнопка с заливкой',
+      text: 'Прототип кнопки - имеет все размеры кнопки, но не содержит заливку, обводку и стили для состояний  :hover, :active, :visited. При выборе типа заливки и цветовой схемы получается цветная кнопка.',
     })(() => {
-        const label = 'Заявка онлайн';
-        const theme = {
-          primary: 'primary',
-          secondary: 'secondary'
-        };
-
-        const view = {
-          filled: 'filled',
-          outlined: 'outlined'
-        };
-
-        return (<Button
-          label={text('Label', label)}
-          theme={select('Theme', theme, theme.primary)}
-          view={select('View', view, view.filled)}
-          disabled={boolean('Disabled', false)}
-        />)
-      }
-    )
-  );
-
-storiesOf('Button2', module)
-  .add('hohoho',
-    withInfo({
-      text: 'Кнопка с заливкой',
-    })(() => {
-        const label = 'Заявка онлайн';
-        const theme = {
-          primary: 'primary',
-          secondary: 'secondary'
-        };
-
-        const view = {
-          filled: 'filled',
-          outlined: 'outlined'
-        };
-
-        const project = {
-          finance: 'finance',
-          minfin: 'minfin'
-        };
-
-        return (<Button2
-          label={text('Label', label)}
-          theme={select('Theme', theme, theme.primary)}
-          view={select('View', view, view.filled)}
-          disabled={boolean('Disabled', false)}
-          project={select('Project', project, project.finance)}
-        />)
+        return (<Button label='Только онлайн заявка' fill='filled' />)
       }
     )
   );

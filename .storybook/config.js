@@ -22,5 +22,3 @@ setOptions({
   hierarchySeparator: null,
   sidebarAnimations: true,
 });
-
-

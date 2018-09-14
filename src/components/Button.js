@@ -1,21 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({type, label, theme, view, disabled}) => (
-    <button
-        type={type ? type:'button'}
-        className={'trm-btn' + (view ? ' trm-btn--'+view:'') + (theme ? ' trm-'+theme:'') }
-        disabled={disabled}
-    >
-        {label}
+const Button = ({type, label, color, fill, size, disabled}) => {
+  let className = `trm-btn`;
+  if (fill) {
+    className += ` trm-btn--${fill}`;
+    if (!color || color !== 'primary') className += ` trm-${color}`;
+    if (!size || size !== 'md') className += ` trm-${size}`;
+  }
+
+  return (
+    <button type={type} className={className} disabled={disabled}>
+      {label}
     </button>
-);
+  )
+};
 
 Button.propTypes = {
-  type: PropTypes.oneOf(['button','reset', 'search']),
+  type: PropTypes.oneOf(['button', 'reset', 'search']),
   label: PropTypes.string,
-  theme: PropTypes.oneOf(['primary','secondary']),
-  view: PropTypes.oneOf(['filled','outlined']),
+  color: PropTypes.oneOf(['primary', 'secondary']),
+  fill: PropTypes.oneOf(['filled', 'outlined']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
   disabled: PropTypes.bool
 };
 

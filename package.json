@@ -11,7 +11,8 @@
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "uikit": "https://github.com/evgeniya-c/ui"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.10",
@@ -25,11 +26,13 @@
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "css-loader": "^1.0.0",
+    "global": "^4.3.2",
     "node-sass": "^4.9.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.5",
     "sass-loader": "^7.1.0",
+    "storybook-addon-smart-knobs": "^3.3.1",
     "style-loader": "^0.23.0",
     "styled-components": "^3.4.5"
   }
